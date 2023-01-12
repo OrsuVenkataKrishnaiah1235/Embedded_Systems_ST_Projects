@@ -15,6 +15,7 @@ for(int i=0;i<=9;i++)
 pinMode(10,OUTPUT);
 pinMode(11,OUTPUT);
 pinMode(12,OUTPUT);
+lcd.init();
 }
 
 void loop()
@@ -27,6 +28,7 @@ if(digitalRead(0)==a[0])
   {
     if(digitalRead(3)==a[3])
     {
+      lcd.setCursor(0,1);
       lcd.print("Welcome");
       digitalWrite(12,HIGH);
       delay(1000);

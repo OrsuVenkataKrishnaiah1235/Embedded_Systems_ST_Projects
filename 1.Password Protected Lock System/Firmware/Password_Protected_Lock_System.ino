@@ -1,11 +1,10 @@
-#include <Wire.h>
 #include <LiquidCrystal.h>
 
 int buzzer=16;
 int Red_Led=17;
 int Green_Led=18;
 
-int Default_Password[4]={1,2,3,4};
+int Default_Password[4]={2,3,3,4};
 
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 

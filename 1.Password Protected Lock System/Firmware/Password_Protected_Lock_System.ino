@@ -6,7 +6,7 @@ int Green_Led=18;
 
 int Default_Password[4]={2,3,3,4};
 
-const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+const int rs = 10, en = 11, d4 = 12, d5 = 13, d6 = 14, d7 = 15;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
@@ -22,7 +22,7 @@ void setup() {
   }
 pinMode(Red_Led,OUTPUT);
 pinMode(Green_Led,OUTPUT);
-pinMode(Buzzer,OUTPUT);
+pinMode(buzzer,OUTPUT);
 }
 
 void loop()

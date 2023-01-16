@@ -1,5 +1,59 @@
 #include <Wire.h>
 #include <LiquidCrystal.h>
+
+int buzzer=16;
+int Red_Led=17;
+int Green_Led=18;
+
+int Default_Password[4]={1,2,3,4};
+
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup() {
+
+  // set up the LCD's number of columns and rows:
+
+  lcd.begin(16, 2);
+
+  for(int i=0;i<=9;i++)
+  {
+    pinMode(i,INPUT);//PUSH BUTTONS 0-9
+  }
+pinMode(Red_Led,OUTPUT);
+pinMode(Green_Led,OUTPUT);
+pinMode(Buzzer,OUTPUT);
+}
+
+void loop()
+{
+if(digitalRead(Default_Password[0])==HIGH)
+{
+  if(digitalRead( Default_Password[1])==HIGH)
+  {
+  if(digitalRead( Default_Password[2])==HIGH)
+  {
+    if(digitalRead( Default_Password[3])==HIGH)
+    {
+      lcd.setCursor(0,1);
+      lcd.print("Welcome");
+      digitalWrite(18,HIGH);
+      delay(1000);
+    }
+  }
+  }
+}
+else
+{
+  lcd.print("Contact Manager/Retype the password");
+  digitalWrite(16,HIGH);
+  digitalWrite(17,HIGH);
+  delay(1000);
+}
+}
+/*#include <Wire.h>
+#include <LiquidCrystal.h>
 #include <Adafruit_PCF8574.h>
 Adafruit_PCF8574 pcf;
 
@@ -53,3 +107,4 @@ else
   delay(1000);
 }
 }
+*/

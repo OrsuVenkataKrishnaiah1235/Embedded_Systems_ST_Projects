@@ -3,44 +3,39 @@
 #include <Adafruit_PCF8574.h>
 Adafruit_PCF8574 pcf;
 
-int buzzer=1;
-int Red_Led=0;
+int buzzer=0;
+int Red_Led=1;
 int Green_Led=2;
-int push_8=3;
-int push_9=4;
+int push_9=3;
 int Default_Password[4]={1,2,3,4};
 
-LiquidCrystal lcd(8,9,10,11,12,13);
+LiquidCrystal lcd(8,9,10,11,12,13);//Rs,Enable,D0,D1,D2,D3
 void setup()
 {
-  for(int i=0;i<=7;i++)
+  for(int i=0;i<=8;i++)
   {
-    pinMode(i,INPUT);//PUSH BUTTONS 0-7
+    pcf.pinMode(i,INPUT);//PUSH BUTTONS 0-7
   }
   if(!pcf.begin(0x20,&Wire))'
   {
     while(1);
   }
-pcf.pinMode(Red_Led,OUTPUT);
-pcf.pinMode(Green_Led,OUTPUT);
-pcf.pinMode(Buzzer,OUTPUT);
-pcf.pinMode(push_8,INPUT);
-pcf.pinMode(push_9,INPUT);
-pinMode(10,OUTPUT);
-pinMode(11,OUTPUT);
-pinMode(12,OUTPUT);
+pinMode(Red_Led,OUTPUT);
+pinMode(Green_Led,OUTPUT);
+pinMode(Buzzer,OUTPUT);
+pinMode(push_9,INPUT);
 lcd.init();
 }
 
 void loop()
 {
-if(digitalRead(Default_Password[0])==HIGH)
+if(pcf.digitalRead(Default_Password[0])==HIGH)
 {
-  if((digitalRead( Default_Password[1])==HIGH)
+  if(pcf.digitalRead( Default_Password[1])==HIGH)
   {
-  if(digitalRead( Default_Password[2])==HIGH)
+  if(pcf.digitalRead( Default_Password[2])==HIGH)
   {
-    if(digitalRead( Default_Password[3])==HIGH)
+    if(pcf.digitalRead( Default_Password[3])==HIGH)
     {
       lcd.setCursor(0,1);
       lcd.print("Welcome");

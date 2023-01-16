@@ -14,5 +14,5 @@ Softwares:-Arduino IDE,Tinker Cad,Proteus Software.
 
 Projects List:-
 
-1.Password Protected Lock System Using 10 push Buttons,Led,I2c_lcd And Buzzer. 
+1.Password Protected Lock System Using 10 push Buttons As Inputs and Red&Green Leds,lcd(16*2) Display And Buzzer. 
 

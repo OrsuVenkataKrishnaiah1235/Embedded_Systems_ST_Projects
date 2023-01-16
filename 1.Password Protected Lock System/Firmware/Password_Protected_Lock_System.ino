@@ -1,12 +1,12 @@
 #include <LiquidCrystal.h>
 
-int buzzer=16;
-int Red_Led=17;
-int Green_Led=18;
+int buzzer=10;
+int Red_Led=11;
+int Green_Led=12;
 
 int Default_Password[4]={2,3,3,4};
 
-const int rs = 10, en = 11, d4 = 12, d5 = 13, d6 = 14, d7 = 15;
+const int rs = A0, en = A1, d4 = A2, d5 = A3, d6 = A4, d7 = A5;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
@@ -37,7 +37,7 @@ if(digitalRead(Default_Password[0])==HIGH)
     {
       lcd.setCursor(0,1);
       lcd.print("Welcome");
-      digitalWrite(18,HIGH);
+      digitalWrite(12,HIGH);
       delay(1000);
     }
   }
@@ -46,8 +46,8 @@ if(digitalRead(Default_Password[0])==HIGH)
 else
 {
   lcd.print("Contact Manager/Retype the password");
-  digitalWrite(16,HIGH);
-  digitalWrite(17,HIGH);
+  digitalWrite(10,HIGH);
+  digitalWrite(11,HIGH);
   delay(1000);
 }
 }

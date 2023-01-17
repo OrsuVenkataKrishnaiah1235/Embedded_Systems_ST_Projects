@@ -15,4 +15,5 @@ Softwares:-Arduino IDE,Tinker Cad,Proteus Software.
 Projects List:-
 
 1.Password Protected Lock System Using 10 push Buttons As Inputs and Red&Green Leds,lcd(16*2) Display And Buzzer. 
-2.Arduino Based Calculator using 4*4 Matrics Keyboard As input and 16*2 LCD Display As Output
+
+2.Arduino Based Calculator using 4*4 Matrics Keyboard As input and 16*2 LCD Display As Output.

@@ -57,8 +57,7 @@ else
   Number = (Number*10) + 1; //Pressed twice 11
 }
  //For Key 2
-
-     if (key == '2') //Button 2 is Pressed
+  if (key == '2') //Button 2 is Pressed
 
     {Serial.println ("Button 2"); 
 
@@ -302,28 +301,5 @@ void DisplayResult()
   lcd.setCursor(0, 1);   // set the cursor to column 0, line 1
 
   lcd.print(Number); //Display the result
-
-}
-
-
-
-void loop() {
-
-  
-
-key = kpd.getKey(); //storing pressed key value in a char
-
-
-if (key!=NO_KEY)
-
-DetectButtons();
-
-
-if (result==true)
-
-CalculateResult();
-
-
-DisplayResult();   
 
 }

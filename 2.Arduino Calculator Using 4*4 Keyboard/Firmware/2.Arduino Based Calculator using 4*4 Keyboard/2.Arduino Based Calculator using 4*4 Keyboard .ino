@@ -1,305 +1,123 @@
-#include <LiquidCrystal.h> 
-#include <Keypad.h> 
-const byte ROWS = 4; // Four rows
-const byte COLS = 4; // Four columns
-long Num1,Num2,Number;//Num1 and Num2 Upto  2 Decimal points only allowed
-char key,action;
-boolean result = false;
+#include <Keypad.h>
+#include <LiquidCrystal.h>
 
-// Defining  the Keymap
-char keys[ROWS][COLS] = {{'7','8','9','D'},{'4','5','6','C'},{'1','2','3','B'},{'*','0','#','A'}};
-byte rowPins[ROWS] = { 0, 1, 2, 3 };// Connect keypad ROW0, ROW1, ROW2 and ROW3 to these Arduino pins.
-byte colPins[COLS] = { 4, 5, 6, 7 }; // Connect keypad COL0, COL1 and COL2 to these Arduino pins.
-//Keypad(char *userKeymap, byte *row, byte *col, byte numRows, byte numCols);
-Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS ); //  Create the Keypad Constructor
+LiquidCrystal lcd(13, 12, 11, 10, 9, 8);
 
-const int rs = 8, en = 9, d4 = 10, d5 = 11, d6 = 12, d7 = 13; //Pins to which LCD is connected
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+long Num1 = 0;
+long Num2 = 0;
+double Result = 0;
 
-void setup() 
+char Key;
+const byte ROWS = 4;
+const byte COLS = 4;
+
+char keys[ROWS][COLS] = {
+  {'1','2','3','+'},
+  {'4','5','6','-'},
+  {'7','8','9','*'},
+  {'C','0','=','/'}
+};
+byte rowPins[ROWS] = {7,6,5,4}; //connect to the row pinouts of the keypad
+byte colPins[COLS] = {3,2,1,0}; //connect to the column pinouts of the keypad
+
+//initialize an instance of class NewKeypad
+Keypad myKeypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS); 
+
+void setup()
 {
-lcd.begin(16, 2); //We are using a 16*2 LCD display
-lcd.print("2 Digits Calculator"); //Display a intro message
-lcd.setCursor(0, 1);   // set the cursor to column 0, line 1
-delay(2000); //Wait for display to show info
-lcd.clear(); //Then clean it
+lcd.begin(16, 2);// start lcd
+lcd.setCursor(0,0);// in lcd Setcursor point at 0th column and 0th row
+lcd.print("Calculator By");
+lcd.setCursor(0,1);//in lcd Setcursor point at 0th column and 1th row
+lcd.print("O.V.Krishnaiah");
+delay(4000);//Wait the information until 4 milli seconds
+lcd.clear();//clear the lcd Screen
+lcd.setCursor(0, 0);////in lcd Setcursor point at 0th column and 0th row
 }
 
-void loop() 
+
+void loop()
 {
-key = kpd.getKey(); //storing pressed key value in a char getKey() is a Instance Method 
-if (key!=NO_KEY)
-DetectButtons();
-if (result==true)
-CalculateResult();
-DisplayResult();   
-}
 
-void DetectButtons()
-{ 
-lcd.clear(); //Blank LCD
-//For Key 0
-if (key == '0')
-{
-Serial.println ("Button 0"); //Button 0 is Pressed
-if (Number==0)
-  Number=0;
-else
-  Number = (Number*10) + 0; //Pressed twice
-}
-//For Key 1
-if (key == '1') //If Button 1 is pressed
-{
-Serial.println ("Button 1"); 
-if (Number==0)
-  Number=1;
-else
-  Number = (Number*10) + 1; //Pressed twice 11
-}
- //For Key 2
-  if (key == '2') //Button 2 is Pressed
-
-    {Serial.println ("Button 2"); 
-
-     if (Number==0)
-
-    Number=2;
-
-    else
-
-    Number = (Number*10) + 2; //Pressed twice 22
-
-    }
-  //For Key 3
-    if (key == '3')
-
-    {
-      Serial.println ("Button 3"); 
-
-     if (Number==0)
-
-    Number=3;
-
-    else
-
-    Number = (Number*10) + 3; //Pressed twice 33
-
-    }
-
-//For Key 4    
-
-     if (key == '4') 
-
-    {
-    Serial.println ("Button 4"); 
-
-    if (Number==0)
-
-    Number=4;
-
-    else
-
-    Number = (Number*10) + 4; //Pressed twice 44
-
-    }
-  //For Key 5
-
-     if (key == '5')
-
-    {
-    Serial.println ("Button 5"); 
-
-    if (Number==0)
-
-    Number=5;
-
-    else
-
-    Number = (Number*10) + 5; //Pressed twice 55
-
-    }
-  //For Key 6
-    if (key == '6')
-
-    {
-    Serial.println ("Button 6"); 
-
-    if (Number==0)
-
-    Number=6;
-
-    else
-
-    Number = (Number*10) + 6; //Pressed twice 66
-
-    }
- //For Key 7
-    
-     if (key == '7') 
-
-    {
-    Serial.println ("Button 7");
-
-    if (Number==0)
-
-    Number=7;
-
-    else
-
-    Number = (Number*10) + 7; //Pressed twice 77
-
-    } 
-
-  //For Key 8
-
-    if (key == '8')
-
-    {
-    Serial.println ("Button 8"); 
-
-    if (Number==0)
-
-    Number=8;
-
-    else
-
-    Number = (Number*10) + 8; //Pressed twice 88
-
-    }   
-  //For Key 9
-  
-    if (key == '9')
-
-    {
-    Serial.println ("Button 9");
-
-    if (Number==0)
-
-    Number=9;
-
-    else
-
-    Number = (Number*10) + 9; //Pressed twice 99
-
-    }  
-  //For Key *
-  
-  if (key=='*') // cancel Button
-
-    {
-    Serial.println ("Button Cancel");
-    Number=Num1=Num2=0; 
-    result=false;
-  }
-  
-//For Key #
-
-    if (key == '#')
-
-    {Serial.println ("Button Equal"); 
-
-    Num2=Number;
-
-    result = true;
-
-    }
- 
-
-if (key == 'A' || key == 'B' || key == 'C' || key == 'D') //Detecting Buttons on Column 4
-
+  Key = myKeypad.getKey();//getKey() instance method to Store the Pressed Key 
+  switch(Key) 
   {
+  case '0' ... '9': // This keeps collecting the first value until a operator is pressed "+-*/"
+    lcd.setCursor(0,0);
+    Num1 = Num1 * 10 + (Key - '0');
+    lcd.print(Num1);
+    break;
 
-    Num1 = Number;    
+  case '+':
+    Num1 = (Result != 0 ? Result : Num1);
+    lcd.setCursor(0,1);
+    lcd.print("+");
+    Num2 = Number2(); // get the collected the second number
+    Result = Num1 + Num2;
+    lcd.setCursor(0,3);
+    lcd.print(Result);
+    Num1 = 0, Num2 = 0; // reset values back to zero for next use
+    break;
 
-    Number =0;
+  case '-':
+    Num1 = (Result != 0 ? Result : Num1);
+    lcd.setCursor(0,1);
+    lcd.print("-");
+    Num2 = Number2(); // get the collected the second number
+    Result = Num1 - Num2;
+    lcd.setCursor(0,3);
+    lcd.print(Result);
+    Num1 = 0, Num2 = 0; // reset values back to zero for next use
+    break;
 
-    if (key == 'A')
+  case '*':
+    Num1 = (Result != 0 ? Result : Num1);
+    lcd.setCursor(0,1);
+    lcd.print("*");
+    Num2 = Number2(); // get the collected the second number
+    Result = Num1 * Num2;
+    lcd.setCursor(0,3);
+    lcd.print(Result);
+    Num1 = 0, Num2 = 0; // reset values back to zero for next use
+    break;
 
+  case '/':
+    Num1 = (Result != 0 ? Result : Num1);
+    lcd.setCursor(0,1);
+    lcd.print("/");
+    Num2 = Number2(); // get the collected the second number
+    Result = Num1 / Num2;
+    lcd.setCursor(0,3);
+    lcd.print(Result);
+    Num1 = 0, Num2 = 0; // reset values back to zero for next use
+    break;
+
+    Num2 == 0 ? lcd.print("Invalid Number") : Result = (float)Num1 / (float)Num2;
+
+    lcd.print(Result);
+    Num1 = 0, Num2 = 0;
+    break;
+
+  case 'C':
+    Result = 0;//Cancle The Calculation
+    lcd.clear();
+    break;
+  }
+}
+
+long Number2()
+{
+  while( 1 )
+  {
+    Key = myKeypad.getKey();
+    if(Key >= '0' && Key <= '9')
     {
-      Serial.println ("Addition");
-      action = '+';
+      Num2 = Num2* 10 + (Key - '0');
+      lcd.setCursor(0,2);
+      lcd.print(Num2);
     }
 
-     if (key == 'B')
-
-    {
-       Serial.println ("Subtraction");
-       action = '-'; 
-     }
-
-     if (key == 'C')
-
-    {
-       Serial.println ("Multiplication"); 
-       action = '*';
-     }
-
-     if (key == 'D')
-
-    {
-       Serial.println ("Devesion"); 
-       action = '/';
-     }  
-
-
-    delay(100);
-
+    if(Key == '=') break;  //return Num2;
   }
-
-  
-
-}
-
-
-void CalculateResult()
-
-{
-
-  if (action=='+')
-
-    Number = Num1+Num2;
-
-
-  if (action=='-')
-
-    Number = Num1-Num2;
-
-
-  if (action=='*')
-
-    Number = Num1*Num2;
-
-
-  if (action=='/')
-
-    Number = Num1/Num2; 
-
-}
-
-
-void DisplayResult()
-
-{
-
-  lcd.setCursor(0, 0);   // set the cursor to column 0, line 1
-
-  lcd.print(Num1); 
-  lcd.print(action); 
-  lcd.print(Num2); 
-
-  
-
-  if (result==true)
-
-  {
-    lcd.print(" ="); 
-    lcd.print(Number);
-} //Display the result
-
-  
-
-  lcd.setCursor(0, 1);   // set the cursor to column 0, line 1
-
-  lcd.print(Number); //Display the result
-
+ return Num2; 
 }

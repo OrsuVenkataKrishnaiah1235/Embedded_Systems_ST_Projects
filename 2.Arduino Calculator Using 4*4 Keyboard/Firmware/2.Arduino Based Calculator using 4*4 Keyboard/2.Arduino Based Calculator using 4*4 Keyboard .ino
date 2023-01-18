@@ -4,7 +4,7 @@ const byte ROWS = 4; // Four rows
 const byte COLS = 4; // Four columns
 
 
-// Define the Keymap
+// Defining  the Keymap
 
 char keys[ROWS][COLS] = {
 

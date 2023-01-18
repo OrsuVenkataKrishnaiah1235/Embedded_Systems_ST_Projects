@@ -51,11 +51,9 @@ void setup() {
 
   lcd.begin(16, 2); //We are using a 16*2 LCD display
 
-  lcd.print("DIY Calculator"); //Display a intro message
+  lcd.print("2 Digits Calculator"); //Display a intro message
 
   lcd.setCursor(0, 1);   // set the cursor to column 0, line 1
-
-  lcd.print("-CircuitDigest"); //Display a intro message 
 
 
    delay(2000); //Wait for display to show info
@@ -121,7 +119,7 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 1; //Pressed twice
+    Number = (Number*10) + 1; //Pressed twice 11
 
     }
   //For Key 2
@@ -136,12 +134,14 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 2; //Pressed twice
+    Number = (Number*10) + 2; //Pressed twice 22
 
     }
-         if (key == '3')
+  //For Key 3
+    if (key == '3')
 
-    {Serial.println ("Button 3"); 
+    {
+      Serial.println ("Button 3"); 
 
      if (Number==0)
 
@@ -149,17 +149,16 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 3; //Pressed twice
+    Number = (Number*10) + 3; //Pressed twice 33
 
     }
 
-    
+//For Key 4    
 
+     if (key == '4') 
 
-
-     if (key == '4') //If Button 4 is pressed
-
-    {Serial.println ("Button 4"); 
+    {
+    Serial.println ("Button 4"); 
 
     if (Number==0)
 
@@ -167,26 +166,30 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 4; //Pressed twice
+    Number = (Number*10) + 4; //Pressed twice 44
 
     }
+  //For Key 5
 
      if (key == '5')
 
-    {Serial.println ("Button 5"); 
+    {
+    Serial.println ("Button 5"); 
 
-     if (Number==0)
+    if (Number==0)
 
     Number=5;
 
     else
 
-    Number = (Number*10) + 5; //Pressed twice
+    Number = (Number*10) + 5; //Pressed twice 55
 
     }
-     if (key == '6')
+  //For Key 6
+    if (key == '6')
 
-    {Serial.println ("Button 6"); 
+    {
+    Serial.println ("Button 6"); 
 
     if (Number==0)
 
@@ -194,13 +197,15 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 6; //Pressed twice
+    Number = (Number*10) + 6; //Pressed twice 66
 
     }
+ //For Key 7
     
-     if (key == '7') //If Button 7 is pressed
+     if (key == '7') 
 
-    {Serial.println ("Button 7");
+    {
+    Serial.println ("Button 7");
 
     if (Number==0)
 
@@ -208,29 +213,32 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 7; //Pressed twice
+    Number = (Number*10) + 7; //Pressed twice 77
 
     } 
 
-  
+  //For Key 8
 
-     if (key == '8')
+    if (key == '8')
 
-    {Serial.println ("Button 8"); 
+    {
+    Serial.println ("Button 8"); 
 
-     if (Number==0)
+    if (Number==0)
 
     Number=8;
 
     else
 
-    Number = (Number*10) + 8; //Pressed twice
+    Number = (Number*10) + 8; //Pressed twice 88
 
     }   
+  //For Key 9
   
-      if (key == '9')
+    if (key == '9')
 
-    {Serial.println ("Button 9");
+    {
+    Serial.println ("Button 9");
 
     if (Number==0)
 
@@ -238,10 +246,10 @@ void DetectButtons()
 
     else
 
-    Number = (Number*10) + 9; //Pressed twice
+    Number = (Number*10) + 9; //Pressed twice 99
 
     }  
-  
+  //For Key *
   
   if (key=='*') // cancel Button
 
@@ -251,7 +259,7 @@ void DetectButtons()
     result=false;
   }
   
-
+//For Key #
 
     if (key == '#')
 

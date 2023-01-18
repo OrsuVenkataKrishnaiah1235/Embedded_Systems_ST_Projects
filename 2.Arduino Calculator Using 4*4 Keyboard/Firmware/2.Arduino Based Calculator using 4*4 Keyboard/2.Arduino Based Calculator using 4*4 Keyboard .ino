@@ -29,7 +29,8 @@ byte rowPins[ROWS] = { 0, 1, 2, 3 };// Connect keypad ROW0, ROW1, ROW2 and ROW3 
 byte colPins[COLS] = { 4, 5, 6, 7 }; // Connect keypad COL0, COL1 and COL2 to these Arduino pins.
 
 
-Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS ); //  Create the Keypad
+Keypad kpd = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS ); //  Create the Keypad Constructor
+//Keypad(char *userKeymap, byte *row, byte *col, byte numRows, byte numCols);
 
 
 const int rs = 8, en = 9, d4 = 10, d5 = 11, d6 = 12, d7 = 13; //Pins to which LCD is connected
@@ -60,6 +61,26 @@ void setup() {
    delay(2000); //Wait for display to show info
 
     lcd.clear(); //Then clean it
+
+}
+void loop() {
+
+  
+
+key = kpd.getKey(); //storing pressed key value in a char getKey() is a Instance Method 
+
+
+if (key!=NO_KEY)
+
+DetectButtons();
+
+
+if (result==true)
+
+CalculateResult();
+
+
+DisplayResult();   
 
 }
 
@@ -364,5 +385,3 @@ CalculateResult();
 DisplayResult();   
 
 }
-
-

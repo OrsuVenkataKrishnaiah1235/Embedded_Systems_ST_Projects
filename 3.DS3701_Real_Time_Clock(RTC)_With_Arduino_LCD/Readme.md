@@ -1,6 +1,6 @@
 Design  a real time clock using DS1307 RTC with Arduino ANd Show the Time and Date on LCD
 
-Steps/Procedure:-
+Steps/Procedure For Reading RTC:-
 
 1. Start I2C Serial Communication.
 

@@ -1,12 +1,12 @@
-// Date and time functions using a DS1307 RTC connected via I2C and Wire lib
 #include <Wire.h>
 #include <LiquidCrystal.h>
 #include "RTClib.h"
 
 RTC_DS1307 rtc;
-LiquidCrystal lcd(7, 6, 5, 4, 3, 2); // (rs, e, d4, d5, d6, d7)
+const int rs=7,en=6,d4=5,d5=4,d6=3,d7=2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7); // (rs, e, d4, d5, d6, d7)
 
-char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+char Days_per_Year_in_week[7][12] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
 void setup () 
 {
@@ -25,7 +25,7 @@ void setup ()
   }
   
     rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));//auto update from computer time
-    //rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));// to set the time manualy 
+    //rtc.adjust(DateTime(Year,Month,Date, Hours, Minutes, Seconds));// to set the time manualy 
   
 }
 
@@ -42,7 +42,7 @@ void loop ()
     lcd.print("   ");
 
     lcd.setCursor(0, 0);
-    lcd.print(daysOfTheWeek[now.dayOfTheWeek()]);
+    lcd.print(Days_per_Year_in_week[now.Days_per_Year_in_week()]);
     lcd.print(" ,");
     lcd.print(now.day());
     lcd.print('/');

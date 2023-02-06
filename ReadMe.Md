@@ -18,4 +18,6 @@ Projects List:-
 
 2.Arduino Based Calculator using 4*4 Matrics Keyboard As input and 16*2 LCD Display As Output.
 
-3.Design a Real Time Clock Using DS1307 RTC With Arduino and Display Current Time And Date on LCD  
+3.Design a Real Time Clock Using DS1307 RTC With Arduino and Display Current Time And Date on LCD.
+
+4.Product or Object Counter using Arduino and display in 20*4 lcd with 2 push-IRSENSORS and Stores data in the EEPROM

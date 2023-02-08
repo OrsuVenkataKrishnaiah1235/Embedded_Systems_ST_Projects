@@ -20,4 +20,4 @@ Projects List:-
 
 3.Design a Real Time Clock Using DS1307 RTC With Arduino and Display Current Time And Date on LCD.
 
-4.Product or Object Counter using Arduino and display in 20*4 lcd with 2 push-IRSENSORS and Stores data in the EEPROM
+4.Automated Product or Object Counter System using Arduino Microcontroller  and display Product count in 20*4 lcd with 2 pushbutton-IRSENSORS and Stores data in the EEPROM

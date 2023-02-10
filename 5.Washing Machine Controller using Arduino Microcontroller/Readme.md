@@ -1,4 +1,5 @@
-Project 5: Design a washing machine controller.
+## Project 5: Design a washing machine controller.
+
 1. Check for the drain switch is closed or not. If it is open, wait until all water drains out and then check the empty water tank switch.
 2. If water tank is empty then is turn on relay to close the drain  valve.
 After the drain is closed 

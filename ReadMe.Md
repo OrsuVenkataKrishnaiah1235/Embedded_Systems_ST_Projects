@@ -1,4 +1,4 @@
----! Standardized process for developing projects for embedded systems!---
+##Standardized process for developing projects for embedded systems##
 
 1.Make a Block Diagram of whole system.
 

@@ -1,11 +1,11 @@
 #include <LiquidCrystal.h>
 
-const int drainSwitch = 8;
-const int waterTank = 9;
-const int drainValve = 10;
-const int washingMotor = 11;
-const int buzzer = 12;
-const int timerSetting = A0;
+int drainSwitch = 8;
+int waterTank = 9;
+int drainValve = 10;
+int washingMotor = 11;
+int buzzer = 12;
+int timerSetting = A0;
 
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 

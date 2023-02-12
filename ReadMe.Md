@@ -1,4 +1,4 @@
----! Standardized process for developing projects for embedded systems!---
+## Standardized procedure for developing projects for embedded systems
 
 1.Make a Block Diagram of whole system.
 
@@ -12,7 +12,7 @@
 
 Softwares:-Arduino IDE,Tinker Cad,Proteus Software.
 
-Projects List:-
+## Projects List
 
 1.Password Protected Lock System Using 10 push Buttons As Inputs and Red&Green Leds,lcd(16*2) Display And Buzzer. 
 
@@ -21,3 +21,5 @@ Projects List:-
 3.Design a Real Time Clock Using DS1307 RTC With Arduino and Display Current Time And Date on LCD.
 
 4.Automated Product or Object Counter System using Arduino Microcontroller  and display Product count in 20*4 lcd with 2 pushbutton-IRSENSORS and Stores data in the EEPROM
+
+5.Design a Washing Machine Controller Using Arduino Microcontroller(Atmega328 ic,Switches for Drain volve,tank states,Buzzer,20*4 LCD)
